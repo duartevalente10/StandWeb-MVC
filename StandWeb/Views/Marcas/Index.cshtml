@@ -1,0 +1,32 @@
+﻿@model IEnumerable<StandWeb.Models.Marcas>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<h1 style=" font-size: 60px; ">Marcas</h1>
+<br />
+@if (User.IsInRole("Gestor")) {
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+}
+
+<table class="table">
+
+    <tbody style="background: #eceeef;">
+@foreach (var item in Model) {
+        <tr>
+            <td style="resize:none; width:1200px;">
+                <a class="nav-link text-dark " style=" font-size: 40px; text-align:center" asp-action="Details" asp-route-id="@item.IdMarcas">@Html.DisplayFor(modelItem => item.Nome)</a>
+            </td>
+            @if (User.IsInRole("Gestor")) {
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdMarcas">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdMarcas">Delete</a>
+            </td>
+            }
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,39 @@
+﻿@model StandWeb.Models.Gostos
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Gostos</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdGostos" />
+            <div class="form-group">
+                <label asp-for="UtilizadoresFK" class="control-label"></label>
+                <select asp-for="UtilizadoresFK" class="form-control" asp-items="ViewBag.UtilizadoresFK"></select>
+                <span asp-validation-for="UtilizadoresFK" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CarrosFK" class="control-label"></label>
+                <select asp-for="CarrosFK" class="form-control" asp-items="ViewBag.CarrosFK"></select>
+                <span asp-validation-for="CarrosFK" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

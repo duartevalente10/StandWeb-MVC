@@ -1,0 +1,29 @@
+﻿@model StandWeb.Models.Marcas
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Model.Nome</h1>
+<div>
+    @if (User.IsInRole("Gestor")) {
+        <a class="nav-link text-dark" asp-action="Edit" asp-route-id="@Model.IdMarcas">Edit</a>
+    }
+</div><br />
+    <div>
+        @foreach (var item in Model.ListaDeCarros) {
+            <div class="Carro">
+                <a asp-action="Details" asp-controller="Carros" asp-route-id="@item.IdCarros">
+                    <img class="FotoCarro" src="~/fotos/@Html.DisplayFor(modelItem => item.Foto)" />
+                    <div class="overlay">
+                        <div class="text">
+                            @Html.DisplayFor(modelItem => item.Modelo)
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+    
+
+    

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<StandWeb.Models.Carros>
+
+@{ ViewData["Title"] = "Index"; }
+<head>
+    <link rel="stylesheet" href="~/css/ImagensFilmes.css" />
+</head>
+<h1>Lista de Carros</h1>
+
+@if (User.IsInRole("Gestor")) {
+<div>
+    <button class="btn btn-primary" onclick="location.href = 'https://localhost:44341/Carros/Create'">Adicionar Carro</button>
+</div>
+<br />
+}
+
+@foreach (var item in Model) {
+
+<div class="Carro">
+    <a asp-action="Details" asp-route-id="@item.IdCarros">
+        <img class="FotoCarro" src="~/fotos/@Html.DisplayFor(modelItem => item.Foto)" />
+        <div class="overlay">
+            <div class="text">
+                @Html.DisplayFor(modelItem => item.Modelo)
+            </div>
+        </div>
+    </a>
+</div>}
+
+

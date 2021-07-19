@@ -1,0 +1,24 @@
+﻿@model IEnumerable<StandWeb.Models.Gostos>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Meus Gostos</h1><br />
+
+
+@foreach (var item in Model) {
+    if (item.Utilizador.Email == User.Identity.Name) {
+        <div class="Carro">
+            <a asp-action="Details" asp-controller="Carros" asp-route-id="@item.Carro.IdCarros">
+                <img class="FotoCarro" src="~/fotos/@Html.DisplayFor(modelItem => item.Carro.Foto)" />
+                <div class="overlay">
+                    <div class="text">
+                        @Html.DisplayFor(modelItem => item.Carro.Modelo)
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+        
+}
